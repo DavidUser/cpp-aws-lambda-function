@@ -1,7 +1,5 @@
 SRC = $(shell find src)
 
-.PHONY: run
-
 all: ./infrastructure/lambda.json
 
 ./build/hello.zip: ./CMakeLists.txt ${SRC}
@@ -26,6 +24,8 @@ all: ./infrastructure/lambda.json
 output.txt: ./infrastructure/lambda.json
 	aws lambda invoke --function-name $$(cat $< | jq -r '.FunctionName') --payload '{ }' $@
 
+build: ./build/hello.zip
+
 run:
 	-@rm -f output.txt
 	${MAKE} output.txt
@@ -39,3 +39,4 @@ clean:
 	-rm -f output.txt
 
 
+.PHONY: build run clean

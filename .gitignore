@@ -3,4 +3,5 @@
 
 ./infrastructure/role.json
 ./infrastructure/lambda.json
-output.txt
+./build
+./output.txt
