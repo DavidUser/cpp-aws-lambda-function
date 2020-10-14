@@ -5,3 +5,6 @@ build/
 infrastructure/lambda.json
 infrastructure/role.json
 output.txt
+
+include/aws*
+lib64/*aws*

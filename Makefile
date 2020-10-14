@@ -1,8 +1,17 @@
 SRC = $(shell find src)
+ROOT_DIR = $(shell pwd)
 
 all: ./infrastructure/lambda.json
 
-./build/hello.zip: ./CMakeLists.txt ${SRC}
+./include/aws:
+	cd ./dependencies && git submodule update --init
+	cd ./dependencies/aws-lambda-cpp && \
+		mkdir -p build && cd build && \
+		cmake3 .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF \
+			 -DCMAKE_INSTALL_PREFIX=${ROOT_DIR} && \
+		${MAKE} && ${MAKE} install
+
+./build/hello.zip: ./CMakeLists.txt ${SRC} ./include/aws
 	mkdir -p build && cd build \
 		&& cmake .. && make aws-lambda-package-hello
 

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 set(CMAKE_BUILD_TYPE Release)
-list(APPEND CMAKE_PREFIX_PATH "~/out")
+list(APPEND CMAKE_PREFIX_PATH ".")
 set(CMAKE_CXX_STANDARD 20)
 project(hello LANGUAGES CXX)
 

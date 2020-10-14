@@ -1,0 +1,3 @@
+[submodule "dependencies/aws-lambda-cpp"]
+	path = dependencies/aws-lambda-cpp
+	url = git@github.com:awslabs/aws-lambda-cpp.git
